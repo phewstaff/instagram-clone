@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deletePost, updatePost } from "./redux/actions/APIActions";
+import { deletePost, updatePost } from "../redux/actions/APIActions";
 import dots from "../assets/images/ellipsis.png";
 import like from "../assets/images/like.svg";
 import commentsImg from "../assets/images/comments.svg";
@@ -15,20 +15,27 @@ import Comments from "./Comments";
 function Post(props) {
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
+
   const openModal = () => {
     setIsOpen(true);
     setIsDropdownOpen(false);
   };
+
   const { likes, id, description, image, profile, comments } = props;
   const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const handleDeletePost = () => {
     dispatch(deletePost(id));
   };
+
   const handleUpdatePost = (id, post) => {
     dispatch(updatePost(id, post));
   };
+
   const [commentsOpen, setCommentsOpen] = useState(false);
+  const [currentDescription, setDesc] = useState("description");
+
   return (
     <>
       <div key={id} className="post">
@@ -47,6 +54,7 @@ function Post(props) {
             src={dots}
             alt="three-dots"
           />
+
           {!isDropdownOpen ? (
             ""
           ) : (
@@ -57,6 +65,7 @@ function Post(props) {
             />
           )}
         </div>
+
         <img src={image} className="post-image" />
         <div className="post-footer">
           <div className="post-footer-buttons">
@@ -65,6 +74,7 @@ function Post(props) {
             <img src={direct} alt="" className="post-footer-button" />
             <img src={save} alt="" className="post-footer-button" />
           </div>
+
           <p className="likes">{likes} likes</p>
           <div className="post-text">
             <p className="post-description">
@@ -88,6 +98,7 @@ function Post(props) {
           )}
 
           <p className="date">9 HOURS AGO </p>
+
           <div className="comments-input-container">
             <img src={sad} alt="emoji" className="sad" />
             <input
@@ -98,6 +109,7 @@ function Post(props) {
             <p className="post-comment">Post</p>
           </div>
         </div>
+
         <Modal
           profile={profile}
           id={id}

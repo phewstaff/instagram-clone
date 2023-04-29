@@ -25,15 +25,18 @@ function Modal({
     likes: 0,
     image: urlInput,
     description: textInput,
+
     user: {
       username: "unicodebootcamp",
       profile_img:
         "https://lh3.googleusercontent.com/ogw/AOh-ky12LqC-YLK26sIoYQDYhN3-qwG9WsZH4bRj1XCB=s64-c-mo",
     },
   };
+
   const isEmpty = urlInput.trim().length === 0;
 
   if (!isOpen) return null;
+
   return ReactDom.createPortal(
     <form>
       <div className="overlay" onClick={closeModal} />
@@ -56,6 +59,7 @@ function Modal({
             {buttonName}
           </button>
         </div>
+
         <div className="create-post-text">
           <div className="post-text-profile">
             {!profile ? (
@@ -71,22 +75,25 @@ function Modal({
               </>
             )}
           </div>
+
           <textarea
             className="text-input"
             type="text"
             maxLength={2200}
             onChange={(e) => {
-              setTextInput(e.currentTarget.value);
+              setTextInput(e.target.value);
               setCountLetters(e.currentTarget.value.length);
             }}
             placeholder="Добавьте подпись..."
             value={textInput}
           />
+
           <div className="post-text-footer">
             <img src={smileImg} alt="" className="smile" />
             <h5 className="count-letters">{countLetters}/2200</h5>
           </div>
         </div>
+
         <div className="create-post-image">
           <input
             className="url-input"
@@ -101,6 +108,7 @@ function Modal({
             value={urlInput}
             placeholder="Введите URL-картинки"
           />
+
           {error && (
             <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
               Please make sure you've entered the <em>url</em>

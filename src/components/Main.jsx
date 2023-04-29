@@ -7,6 +7,7 @@ function Main() {
   const posts = useSelector((state) => state.Data.posts);
   const profile = useSelector((state) => state.Data.profile);
   const suggestions = useSelector((state) => state.Data.suggestions);
+
   return (
     <div className="main-container">
       <div className="posts">
@@ -40,9 +41,11 @@ function Main() {
 
           <p className="change">Change</p>
         </div>
+
         <div className="suggestions">
           <div className="just-for-flex">
             <p className="suggestions-for-you">Suggestions for you</p>
+
             <p className="see-all">See all</p>
           </div>
           {!suggestions
@@ -55,10 +58,12 @@ function Main() {
                       alt="suggestion-profile-img"
                       className="suggestion-profile-img"
                     />
+
                     <div className="suggestion-center">
                       <p className="username">{item.username}</p>
                       <p className="suggestions-for-you">Suggestion for you</p>
                     </div>
+
                     <p className="follow-button">Follow</p>
                   </div>
                 );
@@ -68,6 +73,7 @@ function Main() {
               Information · Help · Prisoner · API · Job · Privacity · Conditions
               · Locations · Trending accounts · Hashtags · Language
             </p>
+
             <p className="alpha">© 2022 INSTAGRAM FROM SIMMXS</p>
           </div>
         </div>

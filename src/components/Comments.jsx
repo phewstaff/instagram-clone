@@ -2,6 +2,7 @@ import React from "react";
 
 function Comments({ comments, commentsOpen, setCommentsOpen }) {
   if (!comments) return "";
+
   return (
     <>
       {comments.map((item) => {
@@ -12,6 +13,7 @@ function Comments({ comments, commentsOpen, setCommentsOpen }) {
           </div>
         );
       })}
+
       <p onClick={() => setCommentsOpen(false)} className="hide-comments">
         {commentsOpen ? "Hide comments" : ""}
       </p>

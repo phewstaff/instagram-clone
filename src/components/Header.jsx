@@ -8,7 +8,7 @@ import logo from "../assets/images/logo.png";
 import search from "../assets/images/search.png";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from ".//Modal";
-import { createPost } from "./redux/actions/APIActions";
+import { createPost } from "../redux/actions/APIActions";
 
 function Header() {
   const dispatch = useDispatch();

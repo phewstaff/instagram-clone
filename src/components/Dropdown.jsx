@@ -7,10 +7,12 @@ function Dropdown({ setIsDropdownOpen, handleDeletePost, openModal }) {
         className="dropdown-overlay"
         onClick={() => setIsDropdownOpen(false)}
       ></div>
+
       <div className="dropdown-container">
         <button onClick={handleDeletePost} className="dropdown delete">
           Удалить
         </button>
+
         <button onClick={openModal} className="dropdown update">
           Изменить
         </button>

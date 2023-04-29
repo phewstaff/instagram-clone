@@ -7,7 +7,7 @@ import {
   fetchPosts,
   fetchProfile,
   fetchSuggestions,
-} from "./components/redux/actions/APIActions";
+} from "./redux/actions/APIActions";
 
 function App() {
   const dispatch = useDispatch();
