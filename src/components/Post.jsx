@@ -29,8 +29,8 @@ function Post(props) {
     dispatch(deletePost(id));
   };
 
-  const handleUpdatePost = (id, post) => {
-    dispatch(updatePost(id, post));
+  const handleUpdatePost = (postId, post) => {
+    dispatch(updatePost(postId, post));
   };
 
   const [commentsOpen, setCommentsOpen] = useState(false);
@@ -42,10 +42,10 @@ function Post(props) {
         <div className="post-header">
           <img
             className="post-header-profile-img"
-            src={profile.profile_img}
+            // src={profile.profile_img}
             alt="profile-img"
           />
-          <p className="username">{profile.username}</p>
+          <p className="username">{}</p>
           <img
             className="dots"
             onClick={() => {
@@ -66,7 +66,11 @@ function Post(props) {
           )}
         </div>
 
-        <img src={image} className="post-image" />
+        <img
+          src={image}
+          className="post-image"
+          onClick={() => console.log(id)}
+        />
         <div className="post-footer">
           <div className="post-footer-buttons">
             <img src={like} alt="" className="post-footer-button" />
@@ -78,7 +82,7 @@ function Post(props) {
           <p className="likes">{likes} likes</p>
           <div className="post-text">
             <p className="post-description">
-              <b className="post-footer-username">{profile.username}</b>
+              <b className="post-footer-username">{}</b>
               {description}
             </p>
           </div>

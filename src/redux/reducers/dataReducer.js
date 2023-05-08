@@ -19,15 +19,21 @@ const DataReducer = (state = initialState, { type, payload }) => {
     case ActionTypes.DELETE_POST:
       return {
         ...state,
-        posts: state.posts.filter((item) => item.id !== payload),
+        posts: state.posts.filter((item) => item._id !== payload),
       };
 
     case ActionTypes.UPDATE_POST:
       return {
         ...state,
         posts: state.posts.map((item) =>
-          item.id === payload.id ? item === payload : item
+          item._id !== payload._id ? item : payload
         ),
+      };
+
+    case ActionTypes.SIGN_IN:
+      return {
+        ...state,
+        user: payload,
       };
 
     default:

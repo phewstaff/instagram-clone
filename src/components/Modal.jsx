@@ -3,7 +3,6 @@ import ReactDom from "react-dom";
 import arrowImg from "../assets/images/arrow.svg";
 import smileImg from "../assets/images/emojis.svg";
 import { useState } from "react";
-import { v4 } from "uuid";
 
 function Modal({
   isOpen,
@@ -18,22 +17,15 @@ function Modal({
 }) {
   const [error, setError] = useState(false);
   const [textInput, setTextInput] = useState(defaultTextInput || "");
-  const [urlInput, setUrlInput] = useState(defaultUrlInput || "");
+  const [fileInput, setUrlInput] = useState(defaultUrlInput || "");
   const [countLetters, setCountLetters] = useState(0);
 
-  const post = {
-    likes: 0,
-    image: urlInput,
-    description: textInput,
+  const formData = new FormData();
 
-    user: {
-      username: "unicodebootcamp",
-      profile_img:
-        "https://lh3.googleusercontent.com/ogw/AOh-ky12LqC-YLK26sIoYQDYhN3-qwG9WsZH4bRj1XCB=s64-c-mo",
-    },
-  };
+  formData.append("description", textInput);
+  formData.append("image", fileInput);
 
-  const isEmpty = urlInput.trim().length === 0;
+  // const isEmpty = fileInput.trim().length === 0;
 
   if (!isOpen) return null;
 
@@ -48,11 +40,18 @@ function Modal({
             alt="arrow button"
             className="arrow"
           />
+
           <p className="create-post-p">{title}</p>
+
           <button
-            disabled={error || isEmpty}
-            onClick={() => {
-              onSubmit(id, post);
+            disabled={error}
+            onClick={(e) => {
+              e.preventDefault();
+              if (id) {
+                onSubmit(id, { description: textInput });
+              } else {
+                onSubmit(id, formData);
+              }
             }}
             className="blue-p"
           >
@@ -71,6 +70,7 @@ function Modal({
                   alt="profile"
                   className="profile-img"
                 />
+
                 <p className="user-name">{profile.username}</p>
               </>
             )}
@@ -97,15 +97,11 @@ function Modal({
         <div className="create-post-image">
           <input
             className="url-input"
-            type="url"
+            type="file"
             required
             onChange={(e) => {
-              e.currentTarget.validity.typeMismatch
-                ? setError(true)
-                : setError(false);
-              setUrlInput(e.currentTarget.value);
+              setUrlInput(e.target.files[0]);
             }}
-            value={urlInput}
             placeholder="Введите URL-картинки"
           />
 

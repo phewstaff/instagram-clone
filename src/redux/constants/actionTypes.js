@@ -1,4 +1,5 @@
 export const ActionTypes = {
+  SIGN_IN: "SIGN_IN",
   FETCH_POSTS: "FETCH_POSTS",
   SET_POSTS: "SET_POSTS",
   CREATE_POST: "CREATE_POST",

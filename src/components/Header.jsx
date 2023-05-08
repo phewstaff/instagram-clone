@@ -17,57 +17,72 @@ function Header() {
   const closeModal = () => {
     setIsOpen(false);
   };
+
   const openModal = () => {
     setIsOpen(true);
   };
+
   const handleAddPost = (id, post) => {
     dispatch(createPost(post));
   };
 
   return (
-    <div className="header-container">
-      <Modal
-        profile={profile}
-        openModal={openModal}
-        onSubmit={handleAddPost}
-        closeModal={closeModal}
-        isOpen={isOpen}
-        title={"Создание публикации"}
-        buttonName={"Опубликовать"}
-      />
-      <img className="logo" src={logo} alt="this is logo" />
-      <input className="search" placeholder="    Search"></input>
-      <ul className="nav">
-        <li className="nav-item">
-          <img src={house} alt="nav" />
-        </li>
-        <li className="nav-item">
-          <img src={direct} alt="nav" />
-        </li>
-        <li className="nav-item">
-          <img
-            className="post-button"
-            src={post}
-            alt="nav"
-            onClick={() => openModal()}
-          />
-        </li>
-        <li className="nav-item">
-          <img src={search} alt="nav" />
-        </li>
-        <li className="nav-item">
-          <img src={notifications} alt="nav" />
-        </li>
+    <header>
+      <div className="header-container">
+        <Modal
+          profile={profile}
+          openModal={openModal}
+          onSubmit={handleAddPost}
+          closeModal={closeModal}
+          isOpen={isOpen}
+          title={"Создание публикации"}
+          buttonName={"Опубликовать"}
+        />
 
-        <li className="nav-item">
-          {!profile ? (
-            ""
-          ) : (
-            <img src={profile.profile_img} alt="nav" className="profile-img" />
-          )}
-        </li>
-      </ul>
-    </div>
+        <img className="logo" src={logo} alt="this is logo" />
+
+        <input className="search" placeholder="Search"></input>
+
+        <ul className="nav">
+          <li className="nav-item">
+            <img src={house} alt="nav" />
+          </li>
+
+          <li className="nav-item">
+            <img src={direct} alt="nav" />
+          </li>
+
+          <li className="nav-item">
+            <img
+              className="post-button"
+              src={post}
+              alt="nav"
+              onClick={() => openModal()}
+            />
+          </li>
+
+          <li className="nav-item">
+            <img src={search} alt="nav" />
+          </li>
+
+          <li className="nav-item">
+            <img src={notifications} alt="nav" />
+          </li>
+
+          <li className="nav-item">
+            {!profile ? (
+              ""
+            ) : (
+              <img
+                src={profile.profile_img}
+                alt="nav"
+                className="profile-img"
+              />
+            )}
+          </li>
+        </ul>
+      </div>
+    </header>
   );
 }
 
