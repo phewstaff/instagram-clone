@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
-  // dispatch(fetchProfile());
+  // dispatch(fetchProfile());  // todo
   const navigate = useNavigate();
 
   const posts = useSelector((state) => state.Data.posts);
@@ -32,7 +32,7 @@ function App() {
     checkToken();
 
     dispatch(fetchPosts());
-    // dispatch(fetchSuggestions());
+    // dispatch(fetchSuggestions()); // todo
   }, []);
 
   return (

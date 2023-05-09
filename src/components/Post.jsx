@@ -34,18 +34,21 @@ function Post(props) {
   };
 
   const [commentsOpen, setCommentsOpen] = useState(false);
-  const [currentDescription, setDesc] = useState("description");
 
   return (
     <>
       <div key={id} className="post">
         <div className="post-header">
-          <img
-            className="post-header-profile-img"
-            // src={profile.profile_img}
-            alt="profile-img"
-          />
-          <p className="username">{}</p>
+          <div className="profile-img-container">
+            <img
+              className="post-header-profile-img"
+              src={profile.avatar}
+              alt="profile-img"
+            />
+          </div>
+
+          <p className="username">{profile.username}</p>
+
           <img
             className="dots"
             onClick={() => {
@@ -71,6 +74,7 @@ function Post(props) {
           className="post-image"
           onClick={() => console.log(id)}
         />
+
         <div className="post-footer">
           <div className="post-footer-buttons">
             <img src={like} alt="" className="post-footer-button" />
@@ -79,10 +83,11 @@ function Post(props) {
             <img src={save} alt="" className="post-footer-button" />
           </div>
 
-          <p className="likes">{likes} likes</p>
+          <p className="likes">0 {likes} likes</p>
+
           <div className="post-text">
             <p className="post-description">
-              <b className="post-footer-username">{}</b>
+              <b className="post-footer-username">{profile.username}</b>
               {description}
             </p>
           </div>
@@ -110,6 +115,7 @@ function Post(props) {
               className="type-comment"
               placeholder="Add a comment..."
             />
+
             <p className="post-comment">Post</p>
           </div>
         </div>
