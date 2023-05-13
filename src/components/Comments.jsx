@@ -15,7 +15,7 @@ function Comments({ comments, commentsOpen, setCommentsOpen }) {
       })}
 
       <p onClick={() => setCommentsOpen(false)} className="hide-comments">
-        {commentsOpen ? "Hide comments" : ""}
+        {commentsOpen ? "Скрыть комментарии" : ""}
       </p>
     </>
   );

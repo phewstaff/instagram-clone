@@ -21,7 +21,7 @@ function Post(props) {
     setIsDropdownOpen(false);
   };
 
-  const { likes, id, description, image, profile, comments } = props;
+  const { likes, id, description, image, profile, comments, date } = props;
   const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -39,15 +39,16 @@ function Post(props) {
     <>
       <div key={id} className="post">
         <div className="post-header">
-          <div className="profile-img-container">
-            <img
-              className="post-header-profile-img"
-              src={profile.avatar}
-              alt="profile-img"
-            />
+          <div className="post-user-information">
+            <div className="profile-img-container">
+              <img
+                className="post-header-profile-img"
+                src={profile.avatar}
+                alt="profile-img"
+              />
+            </div>
+            <p className="username">{profile.username}</p>
           </div>
-
-          <p className="username">{profile.username}</p>
 
           <img
             className="dots"
@@ -94,7 +95,7 @@ function Post(props) {
 
           {!commentsOpen ? (
             <p onClick={() => setCommentsOpen(true)} className="see-comments">
-              See {!comments ? "0" : comments.length} comments
+              Показать {!comments ? "0" : comments.length} комментариев
             </p>
           ) : (
             <>
@@ -106,7 +107,7 @@ function Post(props) {
             </>
           )}
 
-          <p className="date">9 HOURS AGO </p>
+          <p className="date">1 день назад</p>
 
           <div className="comments-input-container">
             <img src={sad} alt="emoji" className="sad" />

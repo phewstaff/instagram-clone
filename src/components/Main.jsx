@@ -19,6 +19,7 @@ function Main() {
               : posts.map((item) => {
                   return (
                     <Post
+                      date={item.created_at}
                       profile={item.user}
                       key={item._id}
                       id={item._id}
