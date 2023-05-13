@@ -25,8 +25,6 @@ function Modal({
   formData.append("description", textInput);
   formData.append("image", fileInput);
 
-  // const isEmpty = fileInput.trim().length === 0;
-
   if (!isOpen) return null;
 
   return ReactDom.createPortal(
@@ -44,13 +42,16 @@ function Modal({
           <p className="create-post-p">{title}</p>
 
           <button
-            disabled={error}
             onClick={(e) => {
               e.preventDefault();
-              if (id) {
-                onSubmit(id, { description: textInput });
+              if (fileInput) {
+                if (id) {
+                  onSubmit(id, { description: textInput });
+                } else {
+                  onSubmit(id, formData);
+                }
               } else {
-                onSubmit(id, formData);
+                setError(true);
               }
             }}
             className="blue-p"
@@ -93,24 +94,32 @@ function Modal({
             <h5 className="count-letters">{countLetters}/2200</h5>
           </div>
         </div>
+        {!id ? (
+          <div className="create-post-image">
+            <label htmlFor="file-upload" className="custom-file-upload">
+              Выберите изображение
+            </label>
 
-        <div className="create-post-image">
-          <input
-            className="url-input"
-            type="file"
-            required
-            onChange={(e) => {
-              setUrlInput(e.target.files[0]);
-            }}
-            placeholder="Введите URL-картинки"
-          />
+            <input
+              className="url-input"
+              id="file-upload"
+              type="file"
+              required
+              onChange={(e) => {
+                setUrlInput(e.target.files[0]);
+                setError(false);
+              }}
+            />
 
-          {error && (
-            <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
-              Please make sure you've entered the <em>url</em>
-            </p>
-          )}
-        </div>
+            {error && (
+              <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
+                Вы не выбрали изображение
+              </p>
+            )}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </form>,
     document.getElementById("portal")
