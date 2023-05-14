@@ -21,7 +21,6 @@ function Modal({
   const [countLetters, setCountLetters] = useState(0);
 
   const formData = new FormData();
-
   formData.append("description", textInput);
   formData.append("image", fileInput);
 
@@ -44,7 +43,7 @@ function Modal({
           <button
             onClick={(e) => {
               e.preventDefault();
-              if (fileInput) {
+              if (fileInput && textInput.trim() !== "") {
                 if (id) {
                   onSubmit(id, { description: textInput });
                 } else {
@@ -113,7 +112,7 @@ function Modal({
 
             {error && (
               <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
-                Вы не выбрали изображение
+                Выберите изображение и напишите описание
               </p>
             )}
           </div>
