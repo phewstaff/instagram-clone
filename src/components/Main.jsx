@@ -8,6 +8,7 @@ import { isTokenValid } from ".././redux/actions/APIActions";
 import Header from "./Header";
 import { fetchPosts } from ".././redux/actions/APIActions";
 import Cookies from "js-cookie";
+import Skeleton from "./Skeleton";
 
 function Main() {
   const posts = useSelector((state) => state.Data.posts);
@@ -48,22 +49,26 @@ function Main() {
       <main>
         <div className="main-container">
           <div className="posts">
-            {!posts
-              ? ""
-              : posts.map((item) => {
-                  return (
-                    <Post
-                      date={item.created_at}
-                      profile={item.user}
-                      key={item._id}
-                      id={item._id}
-                      likes={item.likes}
-                      description={item.description}
-                      image={item.image}
-                      comments={item.comments}
-                    />
-                  );
-                })}
+            {!posts ? (
+              <>
+                <Skeleton />
+              </>
+            ) : (
+              posts.map((item) => {
+                return (
+                  <Post
+                    date={item.created_at}
+                    profile={item.user}
+                    key={item._id}
+                    id={item._id}
+                    likes={item.likes}
+                    description={item.description}
+                    image={item.image}
+                    comments={item.comments}
+                  />
+                );
+              })
+            )}
           </div>
         </div>
       </main>

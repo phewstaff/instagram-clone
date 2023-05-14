@@ -28,11 +28,11 @@ function Modal({
 
   return ReactDom.createPortal(
     <form>
-      <div className="overlay" onClick={closeModal} />
+      <div className="overlay" onClick={() => closeModal()} />
       <div className="window-container">
         <div className="window-header">
           <img
-            onClick={closeModal}
+            onClick={() => closeModal()}
             src={arrowImg}
             alt="arrow button"
             className="arrow"
@@ -45,8 +45,10 @@ function Modal({
               e.preventDefault();
               if (fileInput && textInput.trim() !== "") {
                 if (id) {
+                  closeModal();
                   onSubmit(id, { description: textInput });
                 } else {
+                  closeModal();
                   onSubmit(id, formData);
                 }
               } else {

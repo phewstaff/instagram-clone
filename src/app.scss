@@ -626,3 +626,50 @@ button:hover {
   width: 3rem;
   height: 3rem;
 }
+
+.skeleton {
+  .post {
+    border: 1px solid #a9a2a2;
+    background-color: #8a8484;
+    width: 37rem;
+
+    .post-header {
+      position: relative;
+      border-radius: 3px 3px 0px 0px;
+      padding: 0px 20px;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      background-color: rgb(141, 134, 134);
+      height: 60px;
+      z-index: 0;
+      animation: pulse 2s infinite;
+
+      .post-user-information {
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .profile-img-container {
+        overflow: hidden;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 100%;
+      }
+
+      .post-header-profile-img {
+        object-fit: cover;
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .dots {
+        width: 25px;
+      }
+
+      .username {
+      }
+    }
+  }
+}
