@@ -1,15 +1,3 @@
-//defaults
-p,
-span,
-input,
-textarea,
-label,
-button {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  font-style: normal;
-}
-
 //
 
 header {
@@ -43,6 +31,11 @@ header {
       & .logo {
         float: right;
       }
+    }
+    .profile-img {
+      object-fit: cover;
+      border-radius: 50px;
+      height: 1.5rem;
     }
   }
 
@@ -610,4 +603,26 @@ button:hover {
       }
     }
   }
+}
+
+.toaster {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  button {
+    color: white;
+    border-radius: 50px;
+    border: 1px solid #6a6a6a;
+    background-color: #79a7ff;
+    display: inline-block;
+    padding: 2% 10%;
+    cursor: pointer;
+  }
+}
+
+.post-header-profile-img {
+  object-fit: cover;
+  width: 3rem;
+  height: 3rem;
 }

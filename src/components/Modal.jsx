@@ -67,7 +67,7 @@ function Modal({
             ) : (
               <>
                 <img
-                  src={profile.profile_img}
+                  src={profile.avatar}
                   alt="profile"
                   className="profile-img"
                 />

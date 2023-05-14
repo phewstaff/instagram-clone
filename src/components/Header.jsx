@@ -13,7 +13,7 @@ import { createPost } from "../redux/actions/APIActions";
 function Header() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const profile = useSelector((state) => state.Data.profile);
+  const profile = useSelector((state) => state.Data.posts?.[0]?.user);
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -73,11 +73,7 @@ function Header() {
             {!profile ? (
               ""
             ) : (
-              <img
-                src={profile.profile_img}
-                alt="nav"
-                className="profile-img"
-              />
+              <img src={profile.avatar} alt="nav" className="profile-img" />
             )}
           </li>
         </ul>

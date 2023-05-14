@@ -70,11 +70,7 @@ function Post(props) {
           )}
         </div>
 
-        <img
-          src={image}
-          className="post-image"
-          onClick={() => console.log(id)}
-        />
+        <img src={image} className="post-image" />
 
         <div className="post-footer">
           <div className="post-footer-buttons">

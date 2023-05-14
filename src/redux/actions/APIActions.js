@@ -45,8 +45,10 @@ export const updatePost = (id, post) => async (dispatch) => {
   });
 };
 
-export const isTokenValid = async () => {
-  const response = await fakeInstagramApi.get("/user", config);
+export const isTokenValid = async (token) => {
+  await fakeInstagramApi.get("/user", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
 
 export default {
